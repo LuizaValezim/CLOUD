@@ -1,0 +1,321 @@
+{
+    "virtual_machines": {
+        "vm1": {
+            "image_id": "ami-0149b2da6ceec4bb0",
+            "instance_type": "t2.micro"
+        },
+        "vm2": {
+            "image_id": "ami-0149b2da6ceec4bb0",
+            "instance_type": "t2.small"
+        }
+    },
+    "sec_groups": {
+        "ssh-http": {
+            "name": "ssh-http",
+            "ingress": [
+                {
+                    "ingress": {
+                        "description": "Allow inbound traffic",
+                        "from_port": 0,
+                        "to_port": 0,
+                        "protocol": -1,
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                },
+                {
+                    "ingress": {
+                        "description": "ssh",
+                        "from_port": "22",
+                        "to_port": "22",
+                        "protocol": "tcp",
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                },
+                {
+                    "ingress": {
+                        "description": "http",
+                        "from_port": "80",
+                        "to_port": "80",
+                        "protocol": "tcp",
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                }
+            ]
+        },
+        "https": {
+            "name": "https",
+            "ingress": [
+                {
+                    "ingress": {
+                        "description": "Allow inbound traffic",
+                        "from_port": 0,
+                        "to_port": 0,
+                        "protocol": -1,
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                },
+                {
+                    "ingress": {
+                        "description": "https",
+                        "from_port": "443",
+                        "to_port": "443",
+                        "protocol": "tcp",
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "sec_group_instances": {
+        "vm2": {
+            "sec_names": [
+                "ssh-http",
+                "https"
+            ]
+        },
+        "vm1": {
+            "sec_names": [
+                "ssh-http"
+            ]
+        }
+    },
+    "aws_region": "us-east-1",
+    "aws_user_name": [
+        {
+            "username": "testenumero1",
+            "policy_name": "FullAccess",
+            "policy_description": "Usuario possui acesso a tudo",
+            "policy_action": [
+                "*"
+            ],
+            "policy_resource": "*",
+            "policy_effect": "Allow"
+            
+        },
+        {
+            "username": "testenumero2",
+            "policy_name": "ReadWriteAccess_testenumero2",
+            "policy_description": "Descrever, listar e criar recursos",
+            "policy_action": [
+                "ec2:Describe*",
+                "ec2:Get*",
+                "ec2:Create*",
+                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
+                "ec2:ModifySecurityGroupRules",
+                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:RunInstances"
+            ],
+            "policy_resource": "*",
+            "policy_effect": "Allow"
+            
+        },
+        {
+            "username": "testenumero3",
+            "policy_name": "ReadOnlyAccess_testenumero3",
+            "policy_description": "Descrever e listar recursos",
+            "policy_action": [
+                "ec2:Describe*",
+                "ec2:Get*"
+            ],
+            "policy_resource": "*",
+            "policy_effect": "Allow"
+        }
+            
+        
+        ],
+    "vpc_cidr_block": "10.0.0.0/16"
+}
+
+----------------------------------------------------------
+{
+    "virtual_machines": {
+        "vm3": {
+            "image_id": "ami-03f6d497fceb40069",
+            "instance_type": "t2.micro"
+        },
+        "vm4": {
+            "image_id": "ami-03f6d497fceb40069",
+            "instance_type": "t2.micro"
+        }
+    },
+    "sec_groups": {
+        "ssh-http": {
+            "name": "ssh-http",
+            "ingress": [
+                {
+                    "ingress": {
+                        "description": "Allow inbound traffic",
+                        "from_port": 0,
+                        "to_port": 0,
+                        "protocol": -1,
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                },
+                {
+                    "ingress": {
+                        "description": "ssh libera",
+                        "from_port": "22",
+                        "to_port": "22",
+                        "protocol": "tcp",
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                },
+                {
+                    "ingress": {
+                        "description": "http libera",
+                        "from_port": "80",
+                        "to_port": "80",
+                        "protocol": "tcp",
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                }
+            ]
+        },
+        "https-apenas": {
+            "name": "https-apenas",
+            "ingress": [
+                {
+                    "ingress": {
+                        "description": "Allow inbound traffic",
+                        "from_port": 0,
+                        "to_port": 0,
+                        "protocol": -1,
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                },
+                {
+                    "ingress": {
+                        "description": "https libera",
+                        "from_port": "443",
+                        "to_port": "443",
+                        "protocol": "tcp",
+                        "ipv6_cidr_blocks": null,
+                        "prefix_list_ids": null,
+                        "self": null,
+                        "security_groups": null,
+                        "cidr_blocks": [
+                            "0.0.0.0/0"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "sec_group_instances": {
+        "vm3": {
+            "sec_names": [
+                "ssh-http"
+            ]
+        },
+        "vm4": {
+            "sec_names": [
+                "ssh-http",
+                "https-apenas"
+            ]
+        }
+    },
+    "aws_region": "us-west-1",
+    "aws_user_name": [
+        {
+            "username": "testenumero2",
+            "policy_name": "ReadWriteAccess_testenumero2",
+            "policy_description": "Descrever, listar e criar recursos",
+            "policy_action": [
+                "ec2:Describe*",
+                "ec2:Get*",
+                "ec2:Create*",
+                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
+                "ec2:ModifySecurityGroupRules",
+                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:RunInstances"
+            ],
+            "policy_resource": "*",
+            "policy_effect": "Allow"
+        },
+        {
+            "username": "testenumero3",
+            "policy_name": "ReadOnlyAccess_testenumero3",
+            "policy_description": "Descrever e listar recursos",
+            "policy_action": [
+                "ec2:Describe*",
+                "ec2:Get*"
+            ],
+            "policy_resource": "*",
+            "policy_effect": "Allow"
+        },
+        {
+            "username": "testenumero1",
+            "policy_name": "ReadOnlyAccess_testenumero1",
+            "policy_description": "Descrever e listar recursos",
+            "policy_action": [
+                "ec2:Describe*",
+                "ec2:Get*"
+            ],
+            "policy_resource": "*",
+            "policy_effect": "Allow"
+        }
+    ],
+    "vpc_cidr_block": "172.16.0.0/16"
+}
