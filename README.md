@@ -6,8 +6,8 @@ Data: 2022.2
 
 ---
 
-## Objectives
-Desenvolver uma aplicação capaz de provisionar uma infraestrutura por meio de uma interface amigável(livre escolha) para gerenciar e administrá-la (construir, alterar e deletar recursos).
+## Goals
+Desenvolver uma aplicação capaz de provisionar uma infraestrutura por meio de uma interface amigável (livre escolha) para gerenciar e administrá-la (construir, alterar e deletar recursos).
 
 ---
 
@@ -78,3 +78,9 @@ Lá irá pedir suas keys, default region name e default output format.
 Pronto! Agora o projeto está pronto para ser rodado usando:
 
 `python main.py` ou `python3 main.py`
+
+---
+
+## How to use it
+
+O manual de instruções para utilizar o programa é bem simples. De início será perguntado em qual região você gostaria de atuar. A partir disso, temos várias opções para escolher, dentre elas: criar um usuário, executar ou parar instâncias, destruir algum recurso, listar os recursos, etc... Tudo será decidido pelo usuário utilizando contagem númerica ou, para perguntas binárias, `y` ou `n`. Por fim, é só voltar para o menu do seu dashboard e escolher a opção `Commit changes`, em que o Terraform atuará e subirás as mudanças para a sua conta da AWS.
