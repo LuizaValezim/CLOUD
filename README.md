@@ -30,8 +30,8 @@ Desenvolver uma aplicação capaz de provisionar uma infraestrutura por meio de 
 - AWS
 
 ### 1. Installation
-- pip install boto3
-- pip install colorama
+- `pip install boto3`
+- `pip install colorama`
 
 ### 2. AWS Credentials
 Considerando que você já tem uma conta na AWS, vou te ajudar a achar as suas credenciais de acesso, elas serão necessárias para prosseguir com o projeto.
@@ -41,37 +41,40 @@ Primeiro, você tem que acessar o site da AWS e ir na "Security Credentials". Ne
 ### 3. AWS Configuration
 Na root do seu computador, coloque o seguinte comando no seu terminal:
 
-nano .bashrc
+`nano .bashrc`
 
 Ao final do arquivo, coloque as suas credenciais da AWS:
 
-export AWS_ACCESS_KEY_ID = <your_access_key>
+`export AWS_ACCESS_KEY_ID = <your_access_key>`
 
-export AWS_SECRET_ACCESS_KEY = <your_secret_access_key>
+`export AWS_SECRET_ACCESS_KEY = <your_secret_access_key>`
 
 Ainda na root, vá na pasta .aws e escreva o seguinte comando:
 
-touch credentials
+`touch credentials`
 
 e 
 
-nano credentials
+`nano credentials`
 
 Nesse arquivo você também vai precisar colar as suas credenciais no seguinte padrão:
 
-aws_access_key_id = <your_access_key>
-aws_secret_access_key = <your_secret_access_key>
+`aws_access_key_id = <your_access_key>`
+
+`aws_secret_access_key = <your_secret_access_key>`
 
 De volta na pasta que está contida o main.py desse projeto, rode o seguinte comando:
 
-source ~/.bashrc
+`source ~/.bashrc`
+
+Por fim, o último lugar que teremos que apresentar as nossas keys são para configurar a AWS do próprio computador. Dessa forma, use o código:
+
+`aws configure --profile "your_username"`
+
+Lá irá pedir suas keys, default region name e default output format.
 
 ### 4. Run main.py
 
 Pronto! Agora o projeto está pronto para ser rodado usando:
 
-python main.py
-
-ou
-
-python3 main.py
+`python main.py` ou `python3 main.py`

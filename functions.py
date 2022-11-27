@@ -533,11 +533,11 @@ Destroy user selected...
 def list_all():
     global region
 
-    session = boto3.Session(profile_name='default', region_name=region)
+    session = boto3.Session(profile_name='luizavap', region_name=region)
     ec2iam = session.client('iam')
     ec2re = session.resource('ec2')
-    escolha_listar = input(f""" 
-
+    
+    what2list = input(f""" 
     Do you want to list which of the following resources?
         1. Instances;
         2. Security group & Rules;
@@ -545,8 +545,8 @@ def list_all():
     
     Answer: """)
 
-    while isNumber(escolha_listar):
-        escolha_listar = input(f""" 
+    while isNumber(what2list):
+        what2list = input(f""" 
     Do you want to list which of the following resources?
         1. Instances;
         2. Security group & Rules;
@@ -554,36 +554,35 @@ def list_all():
     
     Answer: """)
 
-    if escolha_listar == "1":
+    if what2list == "1":
         print("\n")
-        print(f"Instances: " + "\n")
+        print(f"Instances:")
 
         for each in ec2re.instances.all():
-            print(f"Id: " + each.id + " " + "| Name: " + each.tags[0]["Value"] + " " + "| State: " + each.state["Name"] + " " +
-            "| Type: " + each.instance_type +  "| Region: "+  each.placement['AvailabilityZone'] + "\n " + f"")
+            print(f"\nId: " + each.id + " " + 
+                   "\nName: " + each.tags[0]["Value"] + " " + 
+                   "\nState: " + each.state["Name"] + " " +
+                   "\nType: " + each.instance_type +  
+                   "\nRegion: "+  each.placement['AvailabilityZone'] + "\n " + f"")
 
+    elif what2list == "2":
+        print("\n")
+        print(f"Users: " )
+        for user in ec2iam.list_users()['Users']:
+            print("User: {0} \ Id: {1} \ Arn: {2}\n".format(
+                user['UserName'],
+                user['UserId'],
+                user['Arn'],
+                )
+            )
 
-    elif escolha_listar == "2":
+    elif what2list == "3":
         print("\n")
         print(f"Security group: & Rules: " )
         for each in ec2re.security_groups.all():
             print(f"Name: " + each.group_name + "\n")
             for rule in each.ip_permissions:
                 print(f"Rule: " + str(rule) + "\n")
-
-
-    elif escolha_listar == "3":
-        print("\n")
-        print(f"Users: " )
-        for user in ec2iam.list_users()['Users']:
-            print("User: {0}\Id: {1}\nARN: {2}\Create on: {3}\n".format(
-                user['UserName'],
-                user['UserId'],
-                user['Arn'],
-                user['CreateDate']
-                )
-            )
-            print(f"")
 
 def commit():
     global doc
